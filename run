@@ -3,10 +3,14 @@
 if [ -z "$TOKEN" ]; then exit 1; fi
 if [ -z "$DEST" ]; then exit 1; fi
 if [ -z "$SRC" ]; then exit 1; fi
+if [ -z "$KEY" ]; then exit 1; fi
 
 git config --global pr-release.token $TOKEN
 git config --global pr-release.branch.production $DEST
 git config --global pr-release.branch.staging $SRC
+
+echo -e "$KEY" > /root/.ssh/id_rsa
+chmod 600 /root/.ssh/id_rsa
 
 if [ -z "$TEMPLATE" ]; then
   git config --global pr-release.template $TEMPLATE
