@@ -1,0 +1,15 @@
+#!/bin/sh
+
+if [ -z "$TOKEN" ]; then exit 1; fi
+if [ -z "$DEST" ]; then exit 1; fi
+if [ -z "$SRC" ]; then exit 1; fi
+
+git config --global pr-release.token $TOKEN
+git config --global pr-release.branch.production $DEST
+git config --global pr-release.branch.staging $SRC
+
+if [ -z "$TEMPLATE" ]; then
+  git config --global pr-release.template $TEMPLATE
+fi
+
+git-pr-release
