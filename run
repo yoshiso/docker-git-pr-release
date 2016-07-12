@@ -12,7 +12,7 @@ git config --global pr-release.branch.staging $SRC
 echo -e "$KEY" > /root/.ssh/id_rsa
 chmod 600 /root/.ssh/id_rsa
 
-if [ -z "$TEMPLATE" ]; then
+if [ ! -z "$TEMPLATE" ]; then
   git config --global pr-release.template $TEMPLATE
 fi
 
